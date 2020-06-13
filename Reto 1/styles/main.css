@@ -12,12 +12,26 @@ button {
     display: none;
 }
 
+hr {
+    height: 0px;
+    border: none;
+}
+
 .calculadora {
+    background-color: #F37D20;
     width: 400px;
     padding: 20px;
     margin: auto;
     display: grid;
     grid-row-gap: 5px;
+}
+
+.calculadora .historial {
+    text-align: right;
+}
+
+.calculadora .historial input {
+    width: 100%;
 }
 
 .calculadora .resultado {
@@ -36,8 +50,18 @@ button {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
+.calculadora .operaciones .operador:nth-of-type(1) {
+    grid-column-start: 1;
+    grid-column-end: 7;
+}
+
 .calculadora .valores {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+}
+
+.calculadora .valores .valor:nth-of-type(10) {
+    grid-column-start: 1;
+    grid-column-end: 3;
 }

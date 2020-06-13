@@ -12,13 +12,26 @@ const todolist = {
             todolist.functions.updateTasksActives();
 
             document.querySelector('.todolist .form button').addEventListener('click', todolist.events.agregarClick);
+            document.querySelector('.todolist .search button').addEventListener('click', todolist.events.buscarClick);
+            let tasks = localStorage.tasks != null ? JSON.parse(localStorage.tasks) : [];
 
-            todolist.functions.render();
+            todolist.functions.render(tasks);
         },
         events: {
+            buscarClick(e) {
+                let tasks = localStorage.tasks != null ? JSON.parse(localStorage.tasks) : [];
+
+                let nombreBusqueda = document.querySelector('#txtTareaBusqueda').value;
+
+                let regexBusqueda = RegExp(`^.*${nombreBusqueda}.*$`)
+
+                let tasksResult = tasks.filter(x => x.nombre.match(regexBusqueda));
+
+                todolist.functions.render(tasksResult);
+            },
             agregarClick(e) {
                 let tasks = localStorage.tasks != null ? JSON.parse(localStorage.tasks) : [];
-                let nombre = document.querySelector('.todolist .form input').value;
+                let nombre = document.querySelector('#txtTarea').value;
 
                 if (nombre.trim() == "") return;
 
@@ -36,7 +49,7 @@ const todolist = {
 
                 localStorage.setItem('tasks', JSON.stringify(tasks));
 
-                todolist.functions.render();
+                todolist.functions.render(tasks);
             },
             eliminarClick(e) {
                 if (!confirm('¿Desea eliminar la tarea?')) return;
@@ -46,7 +59,7 @@ const todolist = {
                 let index = tasks.findIndex(x => x.id == id);
                 tasks.splice(index, 1);
                 localStorage.setItem('tasks', JSON.stringify(tasks));
-                todolist.functions.render();
+                todolist.functions.render(tasks);
             },
             listoChecked(e) {
                 let inputCheck = e.currentTarget;
@@ -73,8 +86,10 @@ const todolist = {
                 let tasksActive = tasks.filter(x => x.active).length;
                 document.querySelector('.date small').textContent = `${tasksActive} tareas activas`;
             },
-            render() {
-                let tasks = localStorage.tasks != null ? JSON.parse(localStorage.tasks) : [];
+            render(results = []) {
+                let tasks = results;
+
+                if (tasks.length > 0) document.querySelector('.todolist .search').classList.remove('disabled');
 
                 let tasksInnerHtml = tasks.map(x => `<li><input type="checkbox" class="chkListo" ${x.active ? "checked" : ""} data-id="${x.id}"><span>${x.nombre}</span><button class="btnEliminar" data-id="${x.id}">Eliminar</button></li>`).join('<hr>');
 

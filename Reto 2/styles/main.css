@@ -14,6 +14,10 @@ ul {
     list-style: none;
 }
 
+.disabled {
+    display: none;
+}
+
 .date {
     width: 350px;
     margin: auto;
@@ -33,14 +37,16 @@ ul {
     text-align: center;
 }
 
-.todolist .form {
+.todolist>.form,
+.search {
     display: flex;
     margin: 10px 0px;
     justify-content: space-between;
     /* color: black; */
 }
 
-.todolist .form * {
+.todolist .form *,
+.todolist .search * {
     color: black;
     padding: 5px;
     border-color: black;
@@ -49,7 +55,8 @@ ul {
     border-radius: 5px;
 }
 
-.todolist .form input {
+.todolist .form input,
+.todolist .search input {
     width: 69%;
 }
 
@@ -59,11 +66,18 @@ ul {
     width: 29%;
 }
 
+.todolist .search button {
+    background-color: cadetblue;
+    color: white;
+    width: 29%;
+}
+
 .todolist .list {
     width: 100%;
 }
 
 .todolist .list .message {
+    text-align: center;
     color: black;
 }
 

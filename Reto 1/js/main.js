@@ -12,6 +12,16 @@ const calculadora = {
             let button = e.currentTarget;
             let valor = button.textContent;
             let inputResultado = document.querySelector('.calculadora .resultado input');
+
+            let listaOperaciones = Array.from(document.querySelectorAll('.calculadora .operaciones .operador')).map(x => { return { valor: x.getAttribute('value'), texto: x.getAttribute('text') }; });
+            let listaOperacionesValores = listaOperaciones.map(x => x.valor.length == 1 ? x.valor : `(${x.valor})`);
+
+            let regexText = listaOperacionesValores.map(x => x.length == 1 ? `\\${x}` : x).join('');
+            let regexValue = RegExp(`[${regexText}]+`);
+            let listaValores = inputResultado.value.split(regexValue);
+            if (valor == '.' && listaValores[listaValores.length - 1].includes(valor)) return;
+            if (valor == '0' && listaValores[listaValores.length - 1].length > 0 && listaValores[listaValores.length - 1].split('').filter(x => x != valor).length == 0) return;
+
             let textoFormula = inputResultado.value;
             let textoFormulaAcumulada = `${textoFormula}${valor}`;
             inputResultado.value = textoFormulaAcumulada;
@@ -20,8 +30,7 @@ const calculadora = {
             let listaOperaciones = Array.from(document.querySelectorAll('.calculadora .operaciones .operador')).map(x => { return { valor: x.getAttribute('value'), texto: x.getAttribute('text') }; });
             let listaOperacionesValores = listaOperaciones.map(x => x.valor);
 
-            // let regexText = listaOperacionesValores.map(x => `\\${x}`).join('');
-            // let regexSplit = `[${regexText}]+`;
+
             let inputResultado = document.querySelector('.calculadora .resultado input');
             if (inputResultado.value == "") return;
             let arrayResultado = inputResultado.value.split('');
@@ -44,7 +53,8 @@ const calculadora = {
                 inputResultado.value = resultado;
                 return;
             } else if (valor == "") {
-                inputResultado.value = "-";
+                inputResultado.value = "";
+                inputHistorial.value = "";
                 return;
             }
 

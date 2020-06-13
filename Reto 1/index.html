@@ -11,7 +11,7 @@
 
 <body>
     <main class="calculadora">
-        <section class="historial disabled">
+        <section class="historial">
             <input type="text" readonly>
         </section>
         <section class="resultado">
@@ -19,13 +19,13 @@
         </section>
         <hr>
         <section class="operaciones">
+            <button class="operador" value="" text="">Limpiar</button>
             <button class="operador" value="+" text="+">+</button>
             <button class="operador" value="-" text="-">-</button>
             <button class="operador" value="*" text="x">x</button>
             <button class="operador" value="/" text="/">/</button>
             <button class="operador" value="**" text="^">x<sup><i>n</i></sup></button>
             <button class="operador" value="=" text="=">=</button>
-            <button class="operador" value="" text="">Limpiar</button>
         </section>
         <hr>
         <section class="valores">
@@ -38,9 +38,8 @@
             <button class="valor">7</button>
             <button class="valor">8</button>
             <button class="valor">9</button>
-            <button class="valor">.</button>
             <button class="valor">0</button>
-            <button class="valor">-</button>
+            <button class="valor">.</button>
         </section>
     </main>
 </body>
