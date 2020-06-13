@@ -17,7 +17,7 @@ const calculadora = {
             inputResultado.value = textoFormulaAcumulada;
         },
         operacionesClick(e) {
-            let listaOperaciones = Array.from(document.querySelectorAll('.calculadora .operaciones .operador')).map(x => { return { valor: x.getAttribute('value'), texto: x.textContent }; });
+            let listaOperaciones = Array.from(document.querySelectorAll('.calculadora .operaciones .operador')).map(x => { return { valor: x.getAttribute('value'), texto: x.getAttribute('text') }; });
             let listaOperacionesValores = listaOperaciones.map(x => x.valor);
 
             // let regexText = listaOperacionesValores.map(x => `\\${x}`).join('');
@@ -40,15 +40,12 @@ const calculadora = {
                 listaOperaciones.forEach(x => {
                     textoFormula = textoFormula.replace(x.texto, x.valor);
                 })
-
                 let resultado = eval(textoFormula);
                 inputResultado.value = resultado;
                 return;
             } else if (valor == "") {
-                console.log(valor);
-                console.log(inputResultado);
-                inputResultado.value = "";
-                console.log(inputResultado.value);
+                inputResultado.value = "-";
+                return;
             }
 
             let textoFormulaAcumulada = `${textoFormula}${texto}`;
