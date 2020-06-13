@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+    font-family: 'MuseoModerno'
+}
+
+body {
+    background-color: darkslategray;
+}
+
+ul {
+    list-style: none;
+}
+
+.date {
+    width: 350px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.todolist {
+    background-color: whitesmoke;
+    width: 350px;
+    margin: auto;
+    padding: 20px;
+}
+
+.todolist h1 {
+    color: darkslategray;
+    text-align: center;
+}
+
+.todolist .form {
+    display: flex;
+    margin: 10px 0px;
+    justify-content: space-between;
+    /* color: black; */
+}
+
+.todolist .form * {
+    color: black;
+    padding: 5px;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+.todolist .form input {
+    width: 69%;
+}
+
+.todolist .form button {
+    background-color: darkslategray;
+    color: white;
+    width: 29%;
+}
+
+.todolist .list {
+    width: 100%;
+}
+
+.todolist .list .message {
+    color: black;
+}
+
+.todolist .list ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.todolist .list ul li {
+    display: grid;
+    grid-template-columns: 1fr 6fr 2fr;
+    align-items: center;
+}
+
+.todolist .list ul li * {
+    color: black;
+}
+
+.todolist .list ul hr {
+    border: none;
+    background-color: #ccc;
+    height: 1px;
+    margin: 5px 0px;
+}
+
+.todolist .list ul li .btnEliminar {
+    background-color: darkred;
+    color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    border-radius: 5px;
+}
