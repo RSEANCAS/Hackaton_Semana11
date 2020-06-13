@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 15px;
+}
+
+.disabled {
+    display: none;
+}
+
+.calculadora {
+    width: 400px;
+    padding: 20px;
+    margin: auto;
+    display: grid;
+    grid-row-gap: 5px;
+}
+
+.calculadora .resultado {
+    width: 100%;
+}
+
+.calculadora .resultado input {
+    width: 100%;
+    padding: 10px;
+    text-align: right;
+}
+
+.calculadora .operaciones {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.calculadora .valores {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
