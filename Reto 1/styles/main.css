@@ -6,6 +6,9 @@
 
 button {
     padding: 15px;
+    background: radial-gradient(at 50% 100%, #a5a5a5, rgba(213, 213, 213, 0) 70%) left 50% bottom 0.125em/ 80% 0.125em no-repeat padding-box, radial-gradient(closest-side, #f5f5f5, rgba(213, 213, 213, 0)) 50% 100%/80% 0.125em no-repeat padding-box, linear-gradient(#f8f8f8, #b5b5b5) padding-box, linear-gradient(#c4c4c4, #d2d2d2) border-box;
+    border: solid 2px gray;
+    outline: none;
 }
 
 .disabled {
@@ -15,6 +18,10 @@ button {
 hr {
     height: 0px;
     border: none;
+}
+
+input:read-only {
+    background-color: silver;
 }
 
 .calculadora {
@@ -59,6 +66,7 @@ hr {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2px;
 }
 
 .calculadora .valores .valor:nth-of-type(10) {
